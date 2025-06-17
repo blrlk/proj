@@ -14,7 +14,7 @@ public class todoList {
 
         while(true){
             System.out.println("select function");
-            System.out.println("1. Add task / 2. Read task / 3. check / 4. Read all task / 5. Delete task ");
+            System.out.println("1. Add task / 2. Read task / 3. check / 4. Read all task / 5. Delete task / 6. exit");
 
 
             System.out.println("== Add task ==");
