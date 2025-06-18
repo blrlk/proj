@@ -7,10 +7,9 @@ import java.util.Scanner;
 
 public class taskManage {
     ArrayList<todo> arrTasks  = new ArrayList<todo>();
+    Scanner input = new Scanner(System.in);
 
     public ArrayList<todo> addTask(){
-        Scanner input = new Scanner(System.in);
-
         while(true){
             todo task = new todo();
 
@@ -43,7 +42,6 @@ public class taskManage {
             for(int i=0;i<arrTasks.size();i++){
                 System.out.println(arrTasks.get(i).getId());
             }
-            Scanner input = new Scanner(System.in);
             String id = input.nextLine();
 
             int findId=0;
@@ -71,7 +69,6 @@ public class taskManage {
             int index = readTask(arrTasks);
         while(true) {
             System.out.println("상태 업데이트 할래? (y/n)");
-            Scanner input = new Scanner(System.in);
             String answer = input.nextLine();
             todo now = arrTasks.get(index);
             boolean crntState = now.isCompleted();
