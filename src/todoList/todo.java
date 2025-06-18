@@ -3,9 +3,9 @@ package todoList;
 public class todo {
     private String id;
     private String title;
-    private boolean completed;
+    private boolean completed = false;
     private String createdAt;
-    private String updatedAt;
+    private String updatedAt = "-";
 
     //constructor
     public todo() {
