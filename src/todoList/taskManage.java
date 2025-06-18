@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class taskManage {
+    ArrayList<todo> arrTasks  = new ArrayList<todo>();
 
     public ArrayList<todo> addTask(){
         Scanner input = new Scanner(System.in);
-        ArrayList<todo> arrTasks  = new ArrayList<todo>();
 
         while(true){
             todo task = new todo();
@@ -68,28 +68,25 @@ public class taskManage {
     }
 
     public void check(ArrayList<todo> arrTasks){
-        while(true) {
             int index = readTask(arrTasks);
+        while(true) {
             System.out.println("상태 업데이트 할래? (y/n)");
             Scanner input = new Scanner(System.in);
             String answer = input.nextLine();
+            todo now = arrTasks.get(index);
+            boolean crntState = now.isCompleted();
 
-            if (answer.equalsIgnoreCase("y")) {
-                arrTasks.get(index).setCompleted(true);
+            if (answer.equals("y")) {
+                now.setCompleted(!crntState);
                 LocalDateTime localDate = LocalDateTime.now();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                 String updateTime = localDate.format(formatter);
-                arrTasks.get(index).setUpdatedAt(updateTime);
+                now.setUpdatedAt(updateTime);
                 break;
-            } else if (answer.equalsIgnoreCase("n")) {
-                arrTasks.get(index).setCompleted(false);
-                LocalDateTime localDate = LocalDateTime.now();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                String updateTime = localDate.format(formatter);
-                arrTasks.get(index).setUpdatedAt(updateTime);
+            } else if(answer.equals("n")) {
                 break;
-            } else {
-                System.out.println("다시 입력");
+            } else{
+                System.out.println("다시");
                 continue;
             }
         }

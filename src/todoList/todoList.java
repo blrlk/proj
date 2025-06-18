@@ -20,10 +20,6 @@ public class todoList {
             switch (input.nextInt()){
                 case 1: //add
                     arrTasks = tm.addTask();
-                    for(int  i=0;i<arrTasks.size();i++){
-                        todo task1 = arrTasks.get(i);
-                        System.out.println(task1.toString());
-                    }
                     break;
                 case 2: //read
                     int index = tm.readTask(arrTasks);
