@@ -1,4 +1,4 @@
-package todoList;
+package domain;
 
 public class todo {
     private String id;

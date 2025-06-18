@@ -1,4 +1,6 @@
-package todoList;
+package v1;
+
+import domain.todo;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
