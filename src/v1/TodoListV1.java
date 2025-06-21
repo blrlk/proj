@@ -1,17 +1,17 @@
 package v1;
 
-import domain.todo;
+import domain.Todo;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class todoList {
+public class TodoListV1 {
     public static void main(String[] args) {
         boolean exit = true;
-        todo task = new todo();
-        ArrayList<todo> arrTasks = null;
-        taskManage tm = new taskManage();
+        Todo task = new Todo();
+        ArrayList<Todo> arrTasks = null;
+        TaskManage tm = new TaskManage();
 
         Scanner input = new Scanner(System.in);
 

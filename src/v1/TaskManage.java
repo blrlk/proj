@@ -1,35 +1,33 @@
 package v1;
 
-import domain.todo;
+import domain.Todo;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class taskManage {
-    ArrayList<todo> arrTasks  = new ArrayList<todo>();
+public class TaskManage {
+    ArrayList<Todo> arrTasks  = new ArrayList<Todo>();
     Scanner input = new Scanner(System.in);
 
-    public ArrayList<todo> addTask(){
+    public ArrayList<Todo> addTask(){
         while(true){
-            todo task = new todo();
+            Todo task = new Todo();
 
             System.out.println("id");
             String id = input.nextLine();
             if(id.isEmpty()){
                 break;
             }
-            task.setId(id);
+            int newId = Integer.parseInt(id);
+            task.setId(newId);
 
             System.out.println("title");
             String title = input.nextLine();
             task.setTitle(title);
 
             LocalDateTime localDate = LocalDateTime.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            String createdTime = localDate.format(formatter);
-            task.setCreatedAt(createdTime);
+            task.setCreatedAt(localDate);
 
             arrTasks.add(task);
         }
@@ -38,17 +36,17 @@ public class taskManage {
 
     }
 
-    public int readTask(ArrayList<todo> arrTasks){
+    public int readTask(ArrayList<Todo> arrTasks){
         while(true){
             System.out.println("select task");
             for(int i=0;i<arrTasks.size();i++){
                 System.out.println(arrTasks.get(i).getId());
             }
-            String id = input.nextLine();
+            int id = Integer.parseInt(input.nextLine());
 
             int findId=0;
             for(int j=0;j<arrTasks.size();j++){
-                if(arrTasks.get(j).getId().equals(id)){
+                if(arrTasks.get(j).getId() == id){
                     findId = j;
                     break;
                 } else{
@@ -67,20 +65,18 @@ public class taskManage {
 
     }
 
-    public void check(ArrayList<todo> arrTasks){
+    public void check(ArrayList<Todo> arrTasks){
             int index = readTask(arrTasks);
         while(true) {
             System.out.println("상태 업데이트 할래? (y/n)");
             String answer = input.nextLine();
-            todo now = arrTasks.get(index);
+            Todo now = arrTasks.get(index);
             boolean crntState = now.isCompleted();
 
             if (answer.equals("y")) {
                 now.setCompleted(!crntState);
                 LocalDateTime localDate = LocalDateTime.now();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                String updateTime = localDate.format(formatter);
-                now.setUpdatedAt(updateTime);
+                now.setUpdatedAt(localDate);
                 break;
             } else if(answer.equals("n")) {
                 break;
@@ -94,15 +90,15 @@ public class taskManage {
 
     }
 
-    public void readAllTask(ArrayList<todo> arrTasks){
+    public void readAllTask(ArrayList<Todo> arrTasks){
         for(int i=0;i<arrTasks.size();i++){
-            todo task = arrTasks.get(i);
+            Todo task = arrTasks.get(i);
             System.out.println(task.toString());
         }
 
     }
 
-    public void deleteTask(ArrayList<todo> arrTasks){
+    public void deleteTask(ArrayList<Todo> arrTasks){
         int index = readTask(arrTasks);
         arrTasks.remove(index);
         System.out.println("delete success");
