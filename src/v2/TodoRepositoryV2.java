@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.Scanner;
 
-//저장소
-public class TodoRepository {
+//저장소 접근
+public class TodoRepositoryV2 {
     Scanner input = new Scanner(System.in);
     ArrayList<Todo> list = new ArrayList<Todo>();
     Optional<Todo> optionalTodo = Optional.empty();
@@ -43,7 +43,7 @@ public class TodoRepository {
         }
     }
 
-    public void delete(TodoService todoService){
+    public void delete(TodoServiceV2 todoService){
         int index = todoService.getIndex(list);
         optionalTodo = findById(index);
         if(optionalTodo.isPresent()){

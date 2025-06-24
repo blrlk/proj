@@ -8,9 +8,9 @@ import java.util.Optional;
 import java.util.Scanner;
 
 //내부 비즈니스 로직
-public class TodoService {
+public class TodoServiceV2 {
     Scanner input = new Scanner(System.in);
-    Optional<Todo> optionalTodo = Optional.empty();;
+    Optional<Todo> optionalTodo;
     int index = 0;
 
     public int getIndex(ArrayList<Todo> list){
@@ -26,7 +26,7 @@ public class TodoService {
         return -1;
     }
 
-    public void updateState(ArrayList<Todo> list, TodoRepository todoRepository) {
+    public void updateState(ArrayList<Todo> list, TodoRepositoryV2 todoRepository) {
         index = getIndex(list);
         optionalTodo = todoRepository.findById(index);
         if(optionalTodo.isPresent()){
@@ -41,7 +41,7 @@ public class TodoService {
 
     }
 
-    public void checkRead(ArrayList<Todo> list, TodoRepository todoRepositody) {
+    public void checkRead(ArrayList<Todo> list, TodoRepositoryV2 todoRepositody) {
         index = getIndex(list);
         optionalTodo = todoRepositody.findById(index);
         if (optionalTodo.isPresent()) {

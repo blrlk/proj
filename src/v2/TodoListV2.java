@@ -10,8 +10,8 @@ public class TodoListV2 {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        TodoRepository todoRepository = new TodoRepository();
-        TodoService todoService = new TodoService();
+        TodoRepositoryV2 todoRepository = new TodoRepositoryV2();
+        TodoServiceV2 todoService = new TodoServiceV2();
         ArrayList<Todo> list = null;
 
         while(true){
